@@ -15,6 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 @Entity
 public class Beer {
 
