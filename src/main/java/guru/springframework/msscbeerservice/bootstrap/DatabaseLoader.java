@@ -4,11 +4,9 @@ import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repository.BeerRepository;
 import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
-@Component
 public class DatabaseLoader implements CommandLineRunner {
 
   private final BeerRepository repository;
