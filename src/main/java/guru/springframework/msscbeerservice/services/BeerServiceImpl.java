@@ -8,8 +8,10 @@ import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -46,5 +48,11 @@ public class BeerServiceImpl implements BeerService {
     beer.setPrice(beerDto.getPrice());
     beer.setUpc(beerDto.getUpc());
     return toDtoFunction().apply(beerRepository.save(beer));
+  }
+
+  @Override
+  public List<BeerDto> getAll() {
+    List<Beer> results = (List<Beer>) beerRepository.findAll();
+    return results.stream().map(toDtoFunction()).collect(Collectors.toList());
   }
 }

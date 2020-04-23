@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -22,6 +23,12 @@ public class BeerController {
   public ResponseEntity getBeerById(@PathVariable UUID beerId) {
     BeerDto dto = beerService.getById(beerId);
     return ResponseEntity.ok(dto);
+  }
+
+  @GetMapping
+  public ResponseEntity getAll() {
+    List<BeerDto> list = beerService.getAll();
+    return ResponseEntity.ok(list);
   }
 
   @PostMapping
