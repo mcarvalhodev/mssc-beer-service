@@ -3,12 +3,11 @@ package guru.springframework.msscbeerservice.web.controller;
 import guru.springframework.msscbeerservice.services.BeerService;
 import guru.springframework.msscbeerservice.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,10 +31,9 @@ public class BeerController {
   }
 
   @PostMapping
-  public ResponseEntity saveBeer(@RequestBody @Validated BeerDto beerDto)
-      throws URISyntaxException {
+  public ResponseEntity saveBeer(@RequestBody @Validated BeerDto beerDto) {
     BeerDto dto = beerService.saveNewBeer(beerDto);
-    return ResponseEntity.created(new URI(dto.getId().toString())).build();
+    return new ResponseEntity(dto, HttpStatus.CREATED);
   }
 
   @PutMapping("/{beerId}")
