@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface BeerService {
-    BeerDto getById(UUID beerId);
+    BeerDto getById(UUID beerId, Boolean showInventory);
 
     BeerDto saveNewBeer(BeerDto beerDto);
 
@@ -17,5 +17,5 @@ public interface BeerService {
 
     List<BeerDto> getAll();
 
-    BeerPagedList list(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest);
+    BeerPagedList list(String beerName, BeerStyleEnum beerStyle, Boolean showInventory, PageRequest pageRequest);
 }

@@ -28,9 +28,13 @@ public class BeerServiceImpl implements BeerService {
   private final BeerEnhancer enhancer;
 
   @Override
-  public BeerDto getById(UUID beerId) {
+  public BeerDto getById(UUID beerId, Boolean showInventory) {
     final Beer beer = beerRepository.findById(beerId).orElseThrow(ResourceNotFoundException::new);
-    return toDtoFunction().apply(beer);
+    Function<Beer, BeerDto> action = toDtoFunction();
+    if (showInventory) {
+      return action.andThen(enhancer::enhance).apply(beer);
+    }
+    return action.apply(beer);
   }
 
   private Function<Beer, BeerDto> toDtoFunction() {
@@ -64,7 +68,8 @@ public class BeerServiceImpl implements BeerService {
   }
 
   @Override
-  public BeerPagedList list(String beerName, BeerStyleEnum beerStyle, PageRequest pageRequest) {
+  public BeerPagedList list(
+      String beerName, BeerStyleEnum beerStyle, Boolean showInventory, PageRequest pageRequest) {
 
     Page<Beer> page;
 
@@ -80,7 +85,11 @@ public class BeerServiceImpl implements BeerService {
       page = beerRepository.findAll(pageRequest);
     }
 
-    Function<Beer, BeerDto> action = toDtoFunction().andThen(enhancer::enhance);
+    Function<Beer, BeerDto> action = toDtoFunction();
+
+    if (showInventory) {
+      action = action.andThen(enhancer::enhance);
+    }
 
     List<BeerDto> resultList = page.getContent().stream().map(action).collect(Collectors.toList());
     PageRequest of =
