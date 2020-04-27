@@ -9,6 +9,7 @@ import guru.springframework.msscbeerservice.web.model.BeerEnhancer;
 import guru.springframework.msscbeerservice.web.model.BeerPagedList;
 import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,7 @@ public class BeerServiceImpl implements BeerService {
   private final BeerMapper beerMapper;
   private final BeerEnhancer enhancer;
 
+  @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventory == false")
   @Override
   public BeerDto getById(UUID beerId, Boolean showInventory) {
     final Beer beer = beerRepository.findById(beerId).orElseThrow(ResourceNotFoundException::new);
@@ -67,6 +69,7 @@ public class BeerServiceImpl implements BeerService {
     return results.stream().map(toDtoFunction()).collect(Collectors.toList());
   }
 
+  @Cacheable(cacheNames = "beerListCache", condition = "#showInventory == false")
   @Override
   public BeerPagedList list(
       String beerName, BeerStyleEnum beerStyle, Boolean showInventory, PageRequest pageRequest) {
