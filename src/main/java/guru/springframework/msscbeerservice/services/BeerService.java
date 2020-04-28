@@ -18,4 +18,6 @@ public interface BeerService {
     List<BeerDto> getAll();
 
     BeerPagedList list(String beerName, BeerStyleEnum beerStyle, Boolean showInventory, PageRequest pageRequest);
+
+    BeerDto getBeerByUPC(Long beerUPC);
 }

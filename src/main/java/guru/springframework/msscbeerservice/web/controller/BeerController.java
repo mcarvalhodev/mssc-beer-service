@@ -52,6 +52,12 @@ public class BeerController {
     return ResponseEntity.ok(dto);
   }
 
+  @RequestMapping("/search")
+  public ResponseEntity search(@RequestParam("upc") Long upc) {
+    BeerDto dto = beerService.getBeerByUPC(upc);
+    return ResponseEntity.ok(dto);
+  }
+
   @PostMapping
   public ResponseEntity saveBeer(@RequestBody @Validated BeerDto beerDto) {
     BeerDto dto = beerService.saveNewBeer(beerDto);

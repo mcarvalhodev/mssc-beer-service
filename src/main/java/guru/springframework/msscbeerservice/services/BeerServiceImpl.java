@@ -99,4 +99,11 @@ public class BeerServiceImpl implements BeerService {
         PageRequest.of(page.getPageable().getPageNumber(), page.getPageable().getPageSize());
     return new BeerPagedList(resultList, of, page.getTotalElements());
   }
+
+  @Cacheable(cacheNames = "beerUpcCache")
+  @Override
+  public BeerDto getBeerByUPC(Long beerUPC) {
+    Beer beer = beerRepository.findByUpc(beerUPC);
+    return toDtoFunction().apply(beer);
+  }
 }
