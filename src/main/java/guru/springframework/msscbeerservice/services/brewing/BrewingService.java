@@ -1,8 +1,10 @@
-package guru.springframework.msscbeerservice.services;
+package guru.springframework.msscbeerservice.services.brewing;
 
+import guru.springframework.msscbeerservice.config.JmsConfig;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.events.BrewBeerEvent;
 import guru.springframework.msscbeerservice.repository.BeerRepository;
+import guru.springframework.msscbeerservice.services.InventoryService;
 import guru.springframework.msscbeerservice.web.mappers.BeerMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class BreweringService {
+public class BrewingService {
 
     private final BeerRepository beerRepository;
     private final InventoryService inventoryService;
@@ -32,7 +34,7 @@ public class BreweringService {
                     log.debug("Inventory is" + onHandInventory);
                     if (beer.getMinOnHand() >= onHandInventory) {
                         jmsTemplate.convertAndSend(
-                                "brewering-request", new BrewBeerEvent(beerMapper.toDto(beer)));
+                                JmsConfig.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.toDto(beer)));
                     }
                 });
     }
