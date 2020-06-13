@@ -1,4 +1,4 @@
-package guru.springframework.msscbeerservice.web.model;
+package guru.springframework.brewery.model;
 
 import guru.springframework.msscbeerservice.services.InventoryService;
 import lombok.RequiredArgsConstructor;

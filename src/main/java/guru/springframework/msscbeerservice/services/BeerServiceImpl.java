@@ -1,13 +1,13 @@
 package guru.springframework.msscbeerservice.services;
 
+import guru.springframework.brewery.model.BeerDto;
+import guru.springframework.brewery.model.BeerEnhancer;
+import guru.springframework.brewery.model.BeerPagedList;
+import guru.springframework.brewery.model.BeerStyleEnum;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.exception.ResourceNotFoundException;
 import guru.springframework.msscbeerservice.repository.BeerRepository;
 import guru.springframework.msscbeerservice.web.mappers.BeerMapper;
-import guru.springframework.msscbeerservice.web.model.BeerDto;
-import guru.springframework.msscbeerservice.web.model.BeerEnhancer;
-import guru.springframework.msscbeerservice.web.model.BeerPagedList;
-import guru.springframework.msscbeerservice.web.model.BeerStyleEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
