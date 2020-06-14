@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -43,4 +44,8 @@ public class Beer {
 
   private Integer minOnHand;
   private Integer quantityToBrew;
+
+  public Optional optional() {
+    return Optional.ofNullable(this);
+  }
 }
