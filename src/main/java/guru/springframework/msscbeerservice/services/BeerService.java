@@ -1,8 +1,8 @@
 package guru.springframework.msscbeerservice.services;
 
-import guru.springframework.brewery.model.BeerDto;
-import guru.springframework.brewery.model.BeerPagedList;
-import guru.springframework.brewery.model.BeerStyleEnum;
+import guru.springframework.msscbeerservice.brewery.model.BeerDto;
+import guru.springframework.msscbeerservice.brewery.model.BeerPagedList;
+import guru.springframework.msscbeerservice.brewery.model.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;

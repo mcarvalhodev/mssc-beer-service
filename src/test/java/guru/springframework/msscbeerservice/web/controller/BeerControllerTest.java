@@ -1,8 +1,8 @@
 package guru.springframework.msscbeerservice.web.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import guru.springframework.brewery.model.BeerDto;
-import guru.springframework.brewery.model.BeerStyleEnum;
+import guru.springframework.msscbeerservice.brewery.model.BeerDto;
+import guru.springframework.msscbeerservice.brewery.model.BeerStyleEnum;
 import guru.springframework.msscbeerservice.services.BeerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

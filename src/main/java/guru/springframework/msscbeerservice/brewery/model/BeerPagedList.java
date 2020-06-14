@@ -1,4 +1,4 @@
-package guru.springframework.brewery.model;
+package guru.springframework.msscbeerservice.brewery.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

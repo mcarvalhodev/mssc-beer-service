@@ -1,9 +1,9 @@
 package guru.springframework.msscbeerservice.services;
 
-import guru.springframework.brewery.model.BeerDto;
-import guru.springframework.brewery.model.BeerEnhancer;
-import guru.springframework.brewery.model.BeerPagedList;
-import guru.springframework.brewery.model.BeerStyleEnum;
+import guru.springframework.msscbeerservice.brewery.model.BeerDto;
+import guru.springframework.msscbeerservice.brewery.model.BeerEnhancer;
+import guru.springframework.msscbeerservice.brewery.model.BeerPagedList;
+import guru.springframework.msscbeerservice.brewery.model.BeerStyleEnum;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.exception.ResourceNotFoundException;
 import guru.springframework.msscbeerservice.repository.BeerRepository;

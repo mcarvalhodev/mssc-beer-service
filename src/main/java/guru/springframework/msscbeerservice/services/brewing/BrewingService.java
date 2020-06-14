@@ -1,6 +1,6 @@
 package guru.springframework.msscbeerservice.services.brewing;
 
-import guru.springframework.brewery.model.events.BrewBeerEvent;
+import guru.springframework.msscbeerservice.brewery.model.events.BrewBeerEvent;
 import guru.springframework.msscbeerservice.config.JmsConfig;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repository.BeerRepository;

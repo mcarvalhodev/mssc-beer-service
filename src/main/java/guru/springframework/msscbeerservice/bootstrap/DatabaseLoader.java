@@ -1,6 +1,6 @@
 package guru.springframework.msscbeerservice.bootstrap;
 
-import guru.springframework.brewery.model.BeerStyleEnum;
+import guru.springframework.msscbeerservice.brewery.model.BeerStyleEnum;
 import guru.springframework.msscbeerservice.domain.Beer;
 import guru.springframework.msscbeerservice.repository.BeerRepository;
 import org.springframework.boot.CommandLineRunner;
