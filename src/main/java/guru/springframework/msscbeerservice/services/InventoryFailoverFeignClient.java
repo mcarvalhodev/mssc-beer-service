@@ -1,6 +1,5 @@
-package guru.springframework.msscbeerservice.services.inventory;
+package guru.springframework.msscbeerservice.services;
 
-import guru.springframework.msscbeerservice.services.InventoryServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 import java.util.UUID;
 
-@FeignClient(name = "inventory-service", fallback = InventoryServiceFeignClientFailover.class)
-public interface InventoryServiceFeignClient {
+@FeignClient("inventory-failover")
+public interface InventoryFailoverFeignClient {
 
-  @RequestMapping(method = RequestMethod.GET, value = InventoryServiceImpl.INVENTORY_PATH)
+  @RequestMapping(method = RequestMethod.GET, value = "/inventory-failover")
   ResponseEntity<List<InventoryServiceImpl.BeerInventoryDto>> getOnhandInventory(
       @PathVariable UUID beerId);
 }
