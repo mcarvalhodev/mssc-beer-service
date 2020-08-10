@@ -48,6 +48,7 @@ services:
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://netflix:eureka@eureka:8761/eureka/
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: 'true'
+    restart: on-failure
   beer-service:
     image: sfgbeerworks/sfg-brewery-beer-service
     ports:
